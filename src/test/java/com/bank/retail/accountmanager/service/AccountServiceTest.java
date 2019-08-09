@@ -53,7 +53,7 @@ public class AccountServiceTest {
     public void testAddAccountWhenNoOtherAccountsExist() {
         when(savingsAccountRepository.findByUser(anyString()))
                 .thenReturn(Collections.emptyList());
-        Assert.assertTrue(accountService.addAccount(mock(Account.class)));
+        Assert.assertTrue(accountService.addAccount(buildMockAccount()));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -61,7 +61,15 @@ public class AccountServiceTest {
     public void testAddAccountWhenOtherAccountsExist() {
         when(savingsAccountRepository.findByUser(anyString()))
                 .thenReturn(Collections.singletonList(mock(SavingsAccount.class)));
-        Assert.assertTrue(accountService.addAccount(mock(Account.class)));
+        Assert.assertTrue(accountService.addAccount(buildMockAccount()));
+    }
+
+    private Account buildMockAccount() {
+        Account acc = new Account();
+        acc.setAmount(100d);
+        acc.setFundsAccount("ABC");
+        acc.setPeriodOfTime("1");
+        return acc;
     }
 
 }
