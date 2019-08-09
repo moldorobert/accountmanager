@@ -1,6 +1,9 @@
 # Account Manager is a demo application which allows the creation of a savings account.
 The account can only be opened between 8 AM and 5 PM and the user can have only one savings account
 
+# Prerequisits
+1) Have JDK installed on your machine
+
 # How to start it?
 1) Open a cmd nd navigate to the root of the prooject
 2) Run "./gradlew bootRun" - this will build the application with Gradle (Wrapper) and then will start a Tomcat instance running on port 8080, by default
