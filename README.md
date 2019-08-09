@@ -16,3 +16,5 @@ By default validation of allowing the account to be opened only during business 
 1) App is constructed around Spring Boot 
 2) Thymeleaf is used forthe simple presentation layer
 3) Data is saved in H2 in-memory DB
+4) Spring Security is used for authentication (there is no authorization)
+5) Spring Actuator is used for monitoring  
