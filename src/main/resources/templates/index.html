@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add savings account</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <br/>
+    <div th:if="${errMsg}" role="alert"
+         th:text="${errMsg}"
+         class="alert alert-danger">
+    </div>
+    <div th:if="${#request.getParameter('msg')}" role="alert"
+         th:text="${#request.getParameter('msg')}"
+         th:class="${'alert ' + #request.getParameter('msgType')}">
+
+    </div>
+    <div>
+        <h1>Add savings account</h1>
+        <form action="#" th:action="@{/account}" th:object="${account}" method="post">
+            <div class="form-group">
+                <label for="fundsAccount">Funds account</label>
+                <select class="form-control" th:field="*{fundsAccount}" id="fundsAccount">
+                    <option th:value="ROBANK100" th:text="ROBANK100"></option>
+                    <option th:value="ROBANK101" th:text="ROBANK101"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" th:field="*{amount}" class="form-control" id="amount" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="fundsAccount">Period of time</label>
+                <select class="form-control" th:field="*{periodOfTime}" id="periodOfTime">
+                    <option th:value="1" th:text="'1 month'"></option>
+                    <option th:value="3" th:text="'3 months'"></option>
+                    <option th:value="6" th:text="'6 months'"></option>
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Add Savings Account">
+        </form>
+    </div>
+</div>
+</body>
+</html>
